@@ -22,6 +22,9 @@ def main(in_file: str, out_file: str):
     with open(in_file, 'r') as inf, open(out_file, 'w') as outf:
         outf.write(inf.readlines()[0])
         for line in inf.readlines()[1:]:
+            if line.startswith(">"):
+                outf.write(line)
+                continue
             line = line.replace(bases, valid_base)
             outf.write(line)
 
